@@ -1,0 +1,53 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>1.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>e57455a0-5060-4985-87b3-980e78ab8950</ProjectGuid>
+    <AssemblyName>GestiPlusSetup</AssemblyName>
+    <Name>GestiPlusSetup</Name>
+    <RootNamespace>GestiPlusSetup</RootNamespace>
+    <InnoSetupPath>C:\Program Files (x86)\Inno Setup 6</InnoSetupPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>
+    </OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>
+    </OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="InstallScript.iss">
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GestiPlus.Database\GestiPlus.Database.csproj">
+      <Name>GestiPlus.Database</Name>
+      <Project>{490a3266-8701-45ba-b47e-4cebca2dafd9}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\GestiPlus.Security\GestiPlus.Security.csproj">
+      <Name>GestiPlus.Security</Name>
+      <Project>{749d55f3-de76-4569-9ee2-67b243c53aa6}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\GestiPlus.Session\GestiPlus.Session.csproj">
+      <Name>GestiPlus.Session</Name>
+      <Project>{822f72fd-4887-41ff-8f99-eff2f9ea3469}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\GestiPlus.Utils\GestiPlus.Utils.csproj">
+      <Name>GestiPlus.Utils</Name>
+      <Project>{710edfe4-929b-45a7-b1b9-a5ea94e4a5d9}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\GestiPlus\GestiPlus.csproj">
+      <Name>GestiPlus</Name>
+      <Project>{a1ec8f14-254b-4561-9a8a-ee8bb040ff28}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\InnoSetupTools\InnoSetupProject.targets" />
+</Project>
