@@ -99,7 +99,7 @@ namespace GestiPlus
 
             numProductos = 0;
 
-            txtIdCliente.Text = "000000000";
+            txtIdCliente.Text = "00000000";
             var tE = new KeyEventArgs(Keys.Enter);
             txtIdCliente_KeyDown(sender, tE);
             txtCodigoProducto.Focus();
@@ -110,6 +110,8 @@ namespace GestiPlus
             var sql = "Select TRIM(TicketPrinter) as TicketPrinter from Configuraciones where codempresa = '" +
                       Global.CodEmpresa + "'";
             var rd = x.DataReader(sql);
+            var sql2 = "Select TRIM(TicketFact) as TicketPrinter from Configuraciones where codempresa = '" +
+                      Global.CodEmpresa + "'";
             if (rd.HasRows)
             {
                 rd.Read();
@@ -315,7 +317,60 @@ namespace GestiPlus
         private void btnFactura_Click(object sender, EventArgs e)
         {
             if (TieneItems())
+            {
+                //var frmVenta = new FrmPreVente();
                 GuardarVentaFact('F');
+                //aca llamamos a la clase factura
+                clsfactura.CreaTicket Ticket1 = new clsfactura.CreaTicket();
+
+                // Ticket1.TextoCentro("Empresa xxxxx "); //imprime una linea de descripcion
+                //Ticket1.TextoCentro("**********************************");
+
+                Ticket1.TextoIzquierda("");
+                Ticket1.TextoDerecha("Factura consumidor final"); //imprime una linea de descripcion
+                Ticket1.TextoDerecha(/*No Fac:*/ "0120102");
+                Ticket1.TextoDerecha(DateTime.Now.ToShortDateString());
+                // Ticket1.TextoIzquierda("Le Atendio: xxxx");
+                Ticket1.TextoIzquierda("");
+                //clsFactura.CreaTicket.LineasGuion();
+
+                clsfactura.CreaTicket.EncabezadoVenta();
+                //clsFactura.CreaTicket.LineasGuion();
+                foreach (DataGridViewRow r in dvDetalle.Rows)
+                {
+                    // PROD                     //PrECIO                                    CANT                         TOTAL
+                    Ticket1.AgregaArticulo(r.Cells[1].Value.ToString(), double.Parse(r.Cells[2].Value.ToString()), int.Parse(r.Cells[3].Value.ToString()), double.Parse(r.Cells[4].Value.ToString())); //imprime una linea de descripcion
+                }
+
+
+                clsfactura.CreaTicket.LineasGuion();
+                Ticket1.TextoDerecha(" ");
+                Ticket1.AgregaTotales("Total", double.Parse(txtTotal.Text)); // imprime linea con total
+                Ticket1.TextoDerecha(" ");
+                //Ticket1.AgregaTotales("Efectivo Entregado:", double.Parse(txtEfectivo.Text));
+                //Ticket1.AgregaTotales("Efectivo Devuelto:", double.Parse(lblDevolucion.Text));
+
+
+                // Ticket1.LineasTotales(); // imprime linea 
+
+                Ticket1.TextoIzquierda(" ");
+                //   Ticket1.TextoCentro("**********************************");
+                // Ticket1.TextoCentro("*     Gracias por preferirnos    *");
+
+                //Ticket1.TextoCentro("**********************************");
+                Ticket1.TextoIzquierda(" ");
+                string impresora = "Microsoft XPS Document Writer";
+                Ticket1.ImprimirTiket(impresora);
+
+                MessageBox.Show("Gracias por preferirnos");
+
+                this.Close();
+
+                LimpiarImprimir();
+                //cmbproductos.Focus();
+                //MessageBox.Show("Gracias por preferirnos");
+            }
+                
             else
                 MessageBox.Show("Tiene que agregar items a la venta.");
         }
@@ -407,6 +462,7 @@ namespace GestiPlus
             // var numero = GetCorrelTicket();
             numVenta = numero;
             var idcliente = lblIdCliente.Text.Trim();
+            var nrccliente = label3.Text.Trim();
             var fecha = DateTime.Today;
             var subtotal = 0.00M;
             var iva = 0.00M;
@@ -431,10 +487,10 @@ namespace GestiPlus
 
             //
 
-            // Obtener todas las posiciones del documento y agregarlas al array para guardarlo.
+            //// Obtener todas las posiciones del documento y agregarlas al array para guardarlo.
             var numRegistros = dvDetalle.Rows.Count;
-            //DetalleCompra[] detCompras;
-            //detCompras = new DetalleCompra[numRegistros];
+            ////DetalleCompra[] detCompras;
+            ////detCompras = new DetalleCompra[numRegistros];
 
             var detVenta = new List<DetalleVenta>();
 
@@ -451,10 +507,10 @@ namespace GestiPlus
             }
 
             VentaItems = detVenta;
-
+            label3.Text = txtIdCliente.Text;
             var venta = new EncabezadoVenta(_tipoVenta, numero.ToString(), Convert.ToInt32(idcliente), fecha,
                 Convert.ToDecimal(subtotal), Convert.ToDecimal(iva), Convert.ToDecimal(total),
-                detVenta, TipoPago);
+               detVenta, TipoPago);
 
             if (venta.GuardarFactura())
                 LimpiarImprimir();
@@ -539,7 +595,7 @@ namespace GestiPlus
             myConn.OpenConnection();
 
             var str =
-                "select a.idcliente, a.nombre, b.idtipocliente from clientes as a inner join tipoclientes as b on a.idtipocliente = b.idtipocliente where a.nrc ='" +
+                "select a.idcliente, a.nombre, b.idtipocliente, a.nrc, a.direccion, a.nit, a.giro from clientes as a inner join tipoclientes as b on a.idtipocliente = b.idtipocliente where a.nrc ='" +
                 txtIdCliente.Text.Trim() + "' AND a.codempresa ='" + Global.CodEmpresa + "'";
 
             var x = myConn.DataReader(str);
@@ -549,7 +605,10 @@ namespace GestiPlus
                 x.Read();
                 lblIdCliente.Text = x["idcliente"].ToString();
                 lblNombreCliente.Text = x["nombre"].ToString();
+                lbldireccion.Text = x["direccion"].ToString();
+                label3.Text = x["nrc"].ToString();
                 lblIdTipoCliente.Text = x["idtipocliente"].ToString();
+                lblgiro.Text = x["giro"].ToString();
                 txtCodigoProducto.Focus();
             }
             else
@@ -709,6 +768,12 @@ namespace GestiPlus
             txtTotal.Text = "0.00";
             numProductos = 0;
             totalCompra = 0.00M;
+            lbldireccion.Text = "";
+            lblgiro.Text = "";
+            lblIdCliente.Text = "";
+            lblNombreCliente.Text = "";
+            label3.Text = "";
+            txtIdCliente.Text = "";
 
             var printDocument = new PrintDocument();
             printDocument.PrinterSettings.PrinterName = nomImpresora;
@@ -1303,6 +1368,26 @@ namespace GestiPlus
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void lblIdTipoCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestiPlus.Utils", "GestiPlu
 EndProject
 Project("{29E15B7A-B420-4782-B51D-1BE2F663A160}") = "GestiPlusSetup", "GestiPlusSetup\GestiPlusSetup.innoproj", "{E57455A0-5060-4985-87B3-980E78AB8950}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DD3BF923-C9FD-4923-B2D9-21C99BFADB9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU

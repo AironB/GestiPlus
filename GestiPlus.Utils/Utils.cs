@@ -71,6 +71,8 @@ namespace GestiPlus.Utils
 
     public class Cliente
     {
+        public string giro;
+
         public int IdCliente { set; get; }
         public string Nombre { set; get; }
         public int Activo { set; get; }

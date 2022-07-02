@@ -48,6 +48,12 @@ namespace GestiPlus
             this.txtCodigoProducto = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblgiro = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbldireccion = new System.Windows.Forms.Label();
             this.btnFindClient = new System.Windows.Forms.Button();
             this.lblIdTipoCliente = new System.Windows.Forms.Label();
             this.lblIdCliente = new System.Windows.Forms.Label();
@@ -210,6 +216,7 @@ namespace GestiPlus
             this.groupBox1.Size = new System.Drawing.Size(1009, 80);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // numCantidad
             // 
@@ -273,6 +280,12 @@ namespace GestiPlus
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.lblgiro);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.lbldireccion);
             this.groupBox2.Controls.Add(this.btnFindClient);
             this.groupBox2.Controls.Add(this.lblIdTipoCliente);
             this.groupBox2.Controls.Add(this.lblIdCliente);
@@ -288,6 +301,62 @@ namespace GestiPlus
             this.groupBox2.Size = new System.Drawing.Size(1009, 103);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(444, 35);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 15);
+            this.label8.TabIndex = 229;
+            this.label8.Text = "Direccion";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // lblgiro
+            // 
+            this.lblgiro.AutoSize = true;
+            this.lblgiro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblgiro.Location = new System.Drawing.Point(103, 76);
+            this.lblgiro.Name = "lblgiro";
+            this.lblgiro.Size = new System.Drawing.Size(2, 17);
+            this.lblgiro.TabIndex = 228;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(68, 76);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 15);
+            this.label7.TabIndex = 227;
+            this.label7.Text = "Giro";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(470, 73);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 15);
+            this.label4.TabIndex = 226;
+            this.label4.Text = "NRC";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Location = new System.Drawing.Point(507, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(2, 17);
+            this.label3.TabIndex = 224;
+            // 
+            // lbldireccion
+            // 
+            this.lbldireccion.AutoSize = true;
+            this.lbldireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbldireccion.Location = new System.Drawing.Point(507, 34);
+            this.lbldireccion.Name = "lbldireccion";
+            this.lbldireccion.Size = new System.Drawing.Size(2, 17);
+            this.lbldireccion.TabIndex = 21;
             // 
             // btnFindClient
             // 
@@ -308,6 +377,7 @@ namespace GestiPlus
             this.lblIdTipoCliente.TabIndex = 35;
             this.lblIdTipoCliente.Text = "label3";
             this.lblIdTipoCliente.Visible = false;
+            this.lblIdTipoCliente.Click += new System.EventHandler(this.lblIdTipoCliente_Click);
             // 
             // lblIdCliente
             // 
@@ -493,7 +563,6 @@ namespace GestiPlus
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.Label lblIdProducto;
         private System.Windows.Forms.Button btnCCF;
         private System.Windows.Forms.Button btnFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn numero;
@@ -506,11 +575,18 @@ namespace GestiPlus
         private System.Windows.Forms.Label lblNombreCliente;
         private System.Windows.Forms.TextBox txtIdCliente;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblIdTipoCliente;
-        private System.Windows.Forms.Label lblIdCliente;
         private System.Windows.Forms.Button btnZ;
         private System.Windows.Forms.Button btnX;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnFindClient;
+        private System.Windows.Forms.Label lblIdProducto;
+        private System.Windows.Forms.Label lblIdTipoCliente;
+        private System.Windows.Forms.Label lblIdCliente;
+        private System.Windows.Forms.Label lbldireccion;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblgiro;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

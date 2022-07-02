@@ -40,12 +40,13 @@ namespace GestiPlus
                 this.mCliente.Nombre = txtNombre.Text.Trim();
                 this.mCliente.NIT = txtNIT.Text.Trim();
                 this.mCliente.NRC = txtNCR.Text.Trim();
-                this.mCliente.TipoCliente = 0;
+                this.mCliente.TipoCliente = 1;
                 this.mCliente.Direccion = txtDireccion.Text.Trim();
                 this.mCliente.Activo = Convert.ToInt32(chkActivo.Checked);
                 this.mCliente.Contacto = txtContacto.Text.Trim();
                 this.mCliente.Telefono = txtTelefono.Text.Trim();
                 this.mCliente.TipoCliente = Convert.ToInt32(cboTipoCliente.SelectedValue);
+                this.mCliente.giro = txtgiro.Text.Trim();
 
                 if (this.mCliente.Actualizar())
                     // Se actualizo el cliente
@@ -65,6 +66,7 @@ namespace GestiPlus
                 this.mCliente.Contacto = txtContacto.Text.Trim();
                 this.mCliente.Telefono = txtTelefono.Text.Trim();
                 this.mCliente.TipoCliente = Convert.ToInt32(cboTipoCliente.SelectedValue);
+                this.mCliente.giro = txtgiro.Text.Trim();
 
                 if (this.mCliente.Guardar())
                     // Se guardo el cliente
@@ -104,12 +106,37 @@ namespace GestiPlus
                 this.txtContacto.Text = this.mCliente.Contacto;
                 this.txtTelefono.Text = this.mCliente.Telefono;
                 this.cboTipoCliente.SelectedValue = this.mCliente.TipoCliente;
+                this.txtgiro.Text = this.mCliente.giro;
             }
             else
             {
                 // Nuevo cliente
                 this.mCliente = new Cliente();
             }
+        }
+
+        private void cboTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int cod;
+            string nombre;
+
+            cod = cboTipoCliente.SelectedIndex;
+            nombre = cboTipoCliente.SelectedIndex.ToString();
+            //esta parte sirve para lo que se visualizara en el combo box
+            switch (cod)
+            {
+                case 0: cboTipoCliente.Text = "3"; break;
+                case 1: cboTipoCliente.Text = "2"; break;
+                default: cboTipoCliente.Text = "1"; break;
+
+            }
+            switch (nombre)
+            {
+                case "Detalle": cboTipoCliente.Text = "Mayoreo"; break;
+                case "Frecuente": cboTipoCliente.Text = "Frecuente"; break;
+                default: cboTipoCliente.Text = "Detalle"; break;
+            }
+            
         }
     }
 }

@@ -47,13 +47,15 @@ namespace GestiPlus
             this.picTop = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cboTipoCliente = new Krypton.Toolkit.KryptonComboBox();
+            this.txtgiro = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboTipoCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(420, 289);
+            this.txtTelefono.Location = new System.Drawing.Point(420, 310);
             this.txtTelefono.MaxLength = 10;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(134, 23);
@@ -62,15 +64,15 @@ namespace GestiPlus
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(359, 292);
+            this.label6.Location = new System.Drawing.Point(359, 313);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 14);
+            this.label6.Size = new System.Drawing.Size(55, 15);
             this.label6.TabIndex = 30;
             this.label6.Text = "Telefono:";
             // 
             // txtContacto
             // 
-            this.txtContacto.Location = new System.Drawing.Point(72, 289);
+            this.txtContacto.Location = new System.Drawing.Point(72, 310);
             this.txtContacto.MaxLength = 125;
             this.txtContacto.Name = "txtContacto";
             this.txtContacto.Size = new System.Drawing.Size(281, 23);
@@ -79,33 +81,33 @@ namespace GestiPlus
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 292);
+            this.label5.Location = new System.Drawing.Point(12, 313);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 14);
+            this.label5.Size = new System.Drawing.Size(59, 15);
             this.label5.TabIndex = 29;
             this.label5.Text = "Contacto:";
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(72, 189);
+            this.txtDireccion.Location = new System.Drawing.Point(72, 202);
             this.txtDireccion.MaxLength = 255;
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(482, 69);
+            this.txtDireccion.Size = new System.Drawing.Size(482, 74);
             this.txtDireccion.TabIndex = 21;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 192);
+            this.label4.Location = new System.Drawing.Point(12, 206);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 14);
+            this.label4.Size = new System.Drawing.Size(60, 15);
             this.label4.TabIndex = 28;
             this.label4.Text = "Dirección:";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(72, 146);
+            this.txtNombre.Location = new System.Drawing.Point(72, 156);
             this.txtNombre.MaxLength = 150;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(401, 23);
@@ -114,9 +116,9 @@ namespace GestiPlus
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 148);
+            this.label3.Location = new System.Drawing.Point(12, 159);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 14);
+            this.label3.Size = new System.Drawing.Size(54, 15);
             this.label3.TabIndex = 25;
             this.label3.Text = "Nombre:";
             // 
@@ -124,7 +126,7 @@ namespace GestiPlus
             // 
             this.chkActivo.Checked = true;
             this.chkActivo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkActivo.Location = new System.Drawing.Point(479, 103);
+            this.chkActivo.Location = new System.Drawing.Point(479, 110);
             this.chkActivo.Name = "chkActivo";
             this.chkActivo.Size = new System.Drawing.Size(58, 20);
             this.chkActivo.TabIndex = 18;
@@ -132,7 +134,7 @@ namespace GestiPlus
             // 
             // txtNIT
             // 
-            this.txtNIT.Location = new System.Drawing.Point(242, 100);
+            this.txtNIT.Location = new System.Drawing.Point(242, 107);
             this.txtNIT.MaxLength = 14;
             this.txtNIT.Name = "txtNIT";
             this.txtNIT.Size = new System.Drawing.Size(151, 23);
@@ -141,15 +143,15 @@ namespace GestiPlus
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(208, 103);
+            this.label2.Location = new System.Drawing.Point(208, 110);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 14);
+            this.label2.Size = new System.Drawing.Size(28, 15);
             this.label2.TabIndex = 22;
             this.label2.Text = "NIT:";
             // 
             // txtNCR
             // 
-            this.txtNCR.Location = new System.Drawing.Point(72, 100);
+            this.txtNCR.Location = new System.Drawing.Point(72, 107);
             this.txtNCR.MaxLength = 9;
             this.txtNCR.Name = "txtNCR";
             this.txtNCR.Size = new System.Drawing.Size(100, 23);
@@ -158,18 +160,18 @@ namespace GestiPlus
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 103);
+            this.label1.Location = new System.Drawing.Point(12, 110);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 14);
+            this.label1.Size = new System.Drawing.Size(34, 15);
             this.label1.TabIndex = 19;
             this.label1.Text = "NRC:";
             // 
             // btnGuardar
             // 
             this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.Location = new System.Drawing.Point(398, 392);
+            this.btnGuardar.Location = new System.Drawing.Point(398, 420);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 21);
+            this.btnGuardar.Size = new System.Drawing.Size(75, 22);
             this.btnGuardar.TabIndex = 26;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -178,9 +180,9 @@ namespace GestiPlus
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(479, 392);
+            this.btnCancelar.Location = new System.Drawing.Point(479, 420);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 21);
+            this.btnCancelar.Size = new System.Drawing.Size(75, 22);
             this.btnCancelar.TabIndex = 27;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -192,35 +194,59 @@ namespace GestiPlus
             this.picTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.picTop.Location = new System.Drawing.Point(0, 0);
             this.picTop.Name = "picTop";
-            this.picTop.Size = new System.Drawing.Size(566, 47);
+            this.picTop.Size = new System.Drawing.Size(566, 50);
             this.picTop.TabIndex = 15;
             this.picTop.TabStop = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 345);
+            this.label7.Location = new System.Drawing.Point(12, 370);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 14);
+            this.label7.Size = new System.Drawing.Size(86, 15);
             this.label7.TabIndex = 31;
             this.label7.Text = "Tipo de Cliente";
             // 
             // cboTipoCliente
             // 
-            this.cboTipoCliente.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTipoCliente.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.cboTipoCliente.DropDownWidth = 131;
             this.cboTipoCliente.IntegralHeight = false;
-            this.cboTipoCliente.Location = new System.Drawing.Point(106, 342);
+            this.cboTipoCliente.Items.AddRange(new object[] {
+            "Mayoreo                     ",
+            "Frecuente                     ",
+            "Detalle"});
+            this.cboTipoCliente.Location = new System.Drawing.Point(106, 366);
             this.cboTipoCliente.Name = "cboTipoCliente";
             this.cboTipoCliente.Size = new System.Drawing.Size(131, 21);
             this.cboTipoCliente.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.cboTipoCliente.TabIndex = 32;
+            this.cboTipoCliente.SelectedIndexChanged += new System.EventHandler(this.cboTipoCliente_SelectedIndexChanged);
+            // 
+            // txtgiro
+            // 
+            this.txtgiro.Location = new System.Drawing.Point(325, 367);
+            this.txtgiro.MaxLength = 10;
+            this.txtgiro.Name = "txtgiro";
+            this.txtgiro.Size = new System.Drawing.Size(134, 23);
+            this.txtgiro.TabIndex = 33;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(264, 370);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 15);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "Giro:";
             // 
             // FrmEditCliente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 424);
+            this.ClientSize = new System.Drawing.Size(566, 454);
+            this.Controls.Add(this.txtgiro);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.cboTipoCliente);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtTelefono);
@@ -269,5 +295,7 @@ namespace GestiPlus
         private System.Windows.Forms.PictureBox picTop;
         private System.Windows.Forms.Label label7;
         private Krypton.Toolkit.KryptonComboBox cboTipoCliente;
+        private System.Windows.Forms.TextBox txtgiro;
+        private System.Windows.Forms.Label label8;
     }
 }
