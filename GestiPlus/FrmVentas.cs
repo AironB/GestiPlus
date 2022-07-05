@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Drawing.Text;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 using GestiPlus.Database;
 using GestiPlus.Session;
 using GestiPlus.Utils;
+using Factura;
 
 namespace GestiPlus
 {
@@ -99,7 +106,7 @@ namespace GestiPlus
 
             numProductos = 0;
 
-            txtIdCliente.Text = "00000000";
+            txtIdCliente.Text = "";
             var tE = new KeyEventArgs(Keys.Enter);
             txtIdCliente_KeyDown(sender, tE);
             txtCodigoProducto.Focus();
@@ -107,11 +114,12 @@ namespace GestiPlus
             var x = new DbConnection();
 
             x.OpenConnection();
+            //aca estyamos pasandole el valor de la tabla configuraciones donde tiene el nombre del impresor de Tickets
             var sql = "Select TRIM(TicketPrinter) as TicketPrinter from Configuraciones where codempresa = '" +
                       Global.CodEmpresa + "'";
             var rd = x.DataReader(sql);
-            var sql2 = "Select TRIM(TicketFact) as TicketPrinter from Configuraciones where codempresa = '" +
-                      Global.CodEmpresa + "'";
+            //var sql2 = "Select TRIM(TicketFact) as TicketPrinter from Configuraciones where codempresa = '" +
+            //          Global.CodEmpresa + "'";
             if (rd.HasRows)
             {
                 rd.Read();
@@ -321,6 +329,8 @@ namespace GestiPlus
                 //var frmVenta = new FrmPreVente();
                 GuardarVentaFact('F');
                 //aca llamamos a la clase factura
+                
+
                 clsfactura.CreaTicket Ticket1 = new clsfactura.CreaTicket();
 
                 // Ticket1.TextoCentro("Empresa xxxxx "); //imprime una linea de descripcion

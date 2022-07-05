@@ -9,6 +9,8 @@ using System.Drawing.Text;
 
 namespace Factura
 {
+    class clsfactura
+    { 
     public class CreaTicket
     {
         public static StringBuilder line = new StringBuilder();
@@ -329,5 +331,6 @@ namespace Factura
         }
     }
     #endregion
+}
 }
 

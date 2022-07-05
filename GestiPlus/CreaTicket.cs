@@ -60,6 +60,8 @@ namespace Factura
                 line.AppendLine(ticket += parte1 + "\n");                //Agrega el texto
 
             }
+           
+            
             public void TextoCentro(string par1)
             {
                 ticket = "";
