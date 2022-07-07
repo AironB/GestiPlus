@@ -338,19 +338,87 @@ namespace GestiPlus
 
                 Ticket1.TextoIzquierda("");
                 Ticket1.TextoDerecha("Factura consumidor final"); //imprime una linea de descripcion
-                Ticket1.TextoDerecha(/*No Fac:*/ "0120102");
+                //aca vamos a poner el numero de correlativo de factura
+                var resultado = 1;
+                var myConn = new DbConnection();
+                myConn.OpenConnection();
+                var str = "select correlfact from correls where codempresa = '" + Global.CodEmpresa + "'";
+
+                var ds = myConn.DataReader(str);
+
+                if (ds.HasRows)
+                {
+                    ds.Read();
+                    resultado = Convert.ToInt32(ds["correlfact"]);
+                }
+                else
+                {
+                    MessageBox.Show("No se logró recuperar el correlativo.");
+                }
+
+                ds.Close();
+                myConn.CloseConnection();
+
+
+              //  string nombrecliente = lblNombreCliente.Text;
+                Ticket1.TextoDerecha(/*No Fac:*/ resultado.ToString());
                 Ticket1.TextoDerecha(DateTime.Now.ToShortDateString());
                 // Ticket1.TextoIzquierda("Le Atendio: xxxx");
-                Ticket1.TextoIzquierda("");
+              
                 //clsFactura.CreaTicket.LineasGuion();
 
                 clsfactura.CreaTicket.EncabezadoVenta();
                 //clsFactura.CreaTicket.LineasGuion();
-                foreach (DataGridViewRow r in dvDetalle.Rows)
+
+
+
+                var detalleventa = dvDetalle.Rows;
+                 foreach (var item in VentaItems)
+            {
+                if (item.NombreProducto.Trim().Length > 30)
                 {
-                    // PROD                     //PrECIO                                    CANT                         TOTAL
-                    Ticket1.AgregaArticulo(r.Cells[1].Value.ToString(), double.Parse(r.Cells[2].Value.ToString()), int.Parse(r.Cells[3].Value.ToString()), double.Parse(r.Cells[4].Value.ToString())); //imprime una linea de descripcion
+                       //// Ticket1.AgregaArticulo(item.NombreProducto.ToString(), double.Parse(item.PrecioUnitario.ToString()), int.Parse(item.Cantidad.ToString()), double.Parse(item.Total.ToString()));
+
+                            //,r.Cells[1].Value.ToString(), double.Parse(r.Cells[2].Value.ToString()), int.Parse(r.Cells[3].Value.ToString()), double.Parse(r.Cells[4].Value.ToString())); //imprime una linea de descripcion
+                                                                                                                                                                                                           //
+                                                                                                                                                                                                           //var producto1 = item.NombreProducto.Substring(0, 29);
+                                                                                                                                                                                                           //var producto2 = item.NombreProducto.Substring(29);
+
+                        //graphics.DrawString(producto1, courrierItemBold, brush, layout,
+                        //    formatLeft);
+                        //Offset += lineheightcourieritembold;
+                        //layout = new RectangleF(new PointF(startX + OffSetX, startY + Offset), layoutSize);
+
+                        //graphics.DrawString(producto2 + " x" + item.Cantidad, courrierItemBold, brush, layout,
+                        //    formatLeft);
+                        //OffSetX = OffSetX + 210;
+                    }
+                else
+                {
+                    //graphics.DrawString(item.NombreProducto + " x" + item.Cantidad, courrierItemBold, brush, layout,
+                    //    formatLeft);
+                    //OffSetX = OffSetX + 210;
                 }
+
+                var z = item.PrecioUnitario.ToString();
+                var newPos = 0;
+                if (z.Length > 4) newPos = z.Length - 4;
+            //    var x = startX + (OffSetX - newPos);
+            //    layout = new RectangleF(new PointF(x, startY + Offset), layoutSize);
+            //    graphics.DrawString(item.PrecioUnitario + "G", courrierItemBold, brush, layout, formatLeft);
+            //    Offset += lineheightcourieritembold;
+            //    OffSetX -= 210 - newPos;
+            //    layout = new RectangleF(new PointF(startX + OffSetX, startY + Offset), layoutSize);
+            }
+                
+                
+                
+                
+  //              foreach (DataGridViewRow r in dvDetalle.Rows)
+   //             {
+                    // PROD                     //PrECIO                                    CANT                         TOTAL
+                   // Ticket1.AgregaArticulo(r.Cells[1].Value.ToString(), double.Parse(r.Cells[2].Value.ToString()), int.Parse(r.Cells[3].Value.ToString()), double.Parse(r.Cells[4].Value.ToString())); //imprime una linea de descripcion
+//                }
 
 
                 clsfactura.CreaTicket.LineasGuion();
@@ -716,6 +784,8 @@ namespace GestiPlus
             myConn.CloseConnection();
 
             return resultado;
+
+
         }
         //hasta aca
 
@@ -1396,6 +1466,11 @@ namespace GestiPlus
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dvDetalle_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
